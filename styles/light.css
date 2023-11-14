@@ -5,10 +5,34 @@
 */
 
 .page.theme_light {
-  --bg-color: #000028;
+  --bg-color: #fff1f7;
   --main-color: #353430;
   --accent-color: #ff8dcb;
   --heading-color: #ffc2e6;
   --shadow-color: #ff0070;
   --bg-image: url(../images/cover-image-light.png);
+  --border-value: 1px solid currentColor;
+  .decorated-zone__item {
+    display: none;
+  }
+  .decorated-zone {
+    color: var(--main-color);
+  }
+  .section-heading {
+    color: var(--main-color);
+  }
+  .header__theme-menu {
+    color: currentColor;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #fff1f7;
+    --main-color: #353430;
+    --accent-color: #ff8dcb;
+    --heading-color: #ffc2e6;
+    --shadow-color: #ff0070;
+    --bg-image: url(../images/cover-image-light.png);
+  }
 }
