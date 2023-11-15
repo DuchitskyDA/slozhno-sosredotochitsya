@@ -1,9 +1,27 @@
-/* ПЕРЕИСПОЛЬЗУЕМЫЕ БЛОКИ */
+/* Переиспользуемые стили start */
+
+/* Кнопки */
 .header__theme-menu-button {
-  border: none;
+  border: 1px solid transparent;
   padding-inline: 13px;
   background-color: transparent;
+  cursor: pointer;
   min-block-size: 26px;
+}
+
+@media (hover: hover) {
+  .header__theme-menu-button:hover {
+    border: 1px solid var(--hover-color);
+  }
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-bottom: 1px solid currentColor;
+  outline: none;
 }
 
 .header__theme-menu-button_active {
@@ -11,32 +29,34 @@
   pointer-events: none;
 }
 
+/* Заголовки */
 .title {
-  color: var(--heading-color);
+  color: var(--heading-color, #db00ff);
   font-weight: 700;
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   line-height: 82.5%;
 }
 
 .title-decor {
-  color: var(--secondary-color);
+  color: var(--secondary-color, #000028);
   font-weight: 700;
   line-height: 23.4px;
-  background-color: var(--accent-color);
+  background-color: var(--accent-color, #ff0070);
 }
 
 .text-shadow {
   text-decoration: none;
-  text-shadow: 2px 2px 0px var(--accent-color);
+  text-shadow: 2px 2px 0px var(--accent-color, #ff0070);
 }
 
 .section-heading {
   margin-block-end: 20px;
-  color: var(--accent-color);
+  color: var(--accent-color, #ff0070);
   font-weight: 700;
   font-size: 18px;
 }
 
+/* Контейнеры */
 .content-container {
   display: flex;
   flex-direction: column;
@@ -51,10 +71,6 @@
   padding-block-end: 0;
 }
 
-.content__link {
-  text-decoration: none;
-}
-
 .card {
   display: flex;
   flex-direction: column;
@@ -62,24 +78,51 @@
 }
 
 .section-block {
-  padding-block-end: clamp(50px, 1.336rem + 7.63vw, 80px);
+  padding-block-end: var(
+    --block-section-padding,
+    clamp(50px, 1.336rem + 7.63vw, 80px)
+  );
 }
-/* СТИЛИ СТРАНИЦЫ */
+
+/* Ссылка */
+.content__link {
+  display: inline-block;
+  text-decoration: none;
+  /* Красивее будет сделать бордер, чтобы при ховере и фокусе ничего не дергалось, но тогда едет PP */
+  /* border: 1px solid transparent; */
+}
+
+@media (hover: hover) {
+  .content__link:hover {
+    border-bottom: 1px solid currentColor;
+  }
+}
+
+.content__link:focus {
+  outline: none;
+}
+
+.content__link:focus-visible {
+  border: 1px solid currentColor;
+  outline: none;
+}
+/* Переиспользуемые стили end */
+
+/* Общие стили страницы start */
 .page {
   margin: 0 auto;
-  color: var(--main-color);
-  font-family: "IBM Plex mono";
+  color: var(--main-color, #f1b2ce);
+  font-family: var(--main-font, "IBM Plex mono", monospace, sans-serif);
   font-weight: 400;
   font-size: 18px;
-  background-color: var(--bg-color);
-  background-image: var(--bg-image);
+  background-color: var(--bg-color, #000028);
+  background-image: var(--bg-image, url(../images/cover-image-dark.png));
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
 }
 
-/* ШАПКА */
 .decorated-zone {
   position: relative;
 }
@@ -88,7 +131,7 @@
   content: "REC";
   position: absolute;
   display: inline-block;
-  color: var(--accent-color);
+  color: var(--accent-color, #ff0070);
   font-size: 18px;
   line-height: 25px;
   inset-block-start: clamp(0.625rem, 0.029rem + 2.54vw, 1.25rem);
@@ -99,8 +142,8 @@
   content: "";
   position: absolute;
   border-radius: 50%;
-  background-color: var(--accent-color);
-  filter: drop-shadow(0px 0px 4px var(--accent-color));
+  background-color: var(--accent-color, #ff0070);
+  filter: drop-shadow(0px 0px 4px var(--accent-color, #ff0070));
   block-size: 9px;
   inline-size: 9px;
   inset-inline-end: -20px;
@@ -109,7 +152,10 @@
 
 .decorated-zone::before,
 .decorated-zone::after {
-  --inset-value: var(--inline-section-padding);
+  --inset-value: var(
+    --inline-section-padding,
+    clamp(10px, 0.029rem + 2.54vw, 20px)
+  );
   content: "";
   position: absolute;
   inline-size: 25px;
@@ -117,24 +163,26 @@
 }
 
 .decorated-zone::before {
-  border-top: var(--border-value);
-  border-right: var(--border-value);
+  border-top: 1px solid var(--accent-color, #ff0070);
+  border-right: 1px solid var(--accent-color, #ff0070);
   inset-block-start: var(--inset-value);
   inset-inline-end: var(--inset-value);
 }
 
 .decorated-zone::after {
-  border-bottom: var(--border-value);
-  border-left: var(--border-value);
+  border-bottom: 1px solid var(--accent-color, #ff0070);
+  border-left: 1px solid var(--accent-color, #ff0070);
   inset-block-end: var(--inset-value);
   inset-inline-start: var(--inset-value);
 }
+/* Общие стили страницы end */
 
+/* Header start */
 .header {
   display: grid;
   grid-template-rows: 1fr min-content 1fr;
   grid-template-areas: "menu" "title" "text";
-  padding: var(--inline-section-padding);
+  padding: var(--inline-section-padding, clamp(10px, 0.029rem + 2.54vw, 20px));
   block-size: 668px;
   min-block-size: 100vh;
 }
@@ -142,12 +190,12 @@
 .header__theme-menu {
   grid-area: menu;
   margin-block-start: 65px;
-  color: var(--accent-color);
+  color: var(--accent-color, #ff0070);
 }
 
 .header__title {
   grid-area: title;
-  text-shadow: 4px 4px 0px var(--accent-color);
+  text-shadow: 4px 4px 0px var(--accent-color, #ff0070);
 }
 
 .header__content-text {
@@ -161,13 +209,16 @@
   align-items: flex-end;
   gap: 10px;
 }
+/* Header end */
 
-/* MAIN */
+/* Main start */
 .main {
-  padding: clamp(40px, 1.307rem + 5.09vw, 60px) var(--inline-section-padding);
+  padding: clamp(40px, 1.307rem + 5.09vw, 60px)
+    var(--inline-section-padding, clamp(10px, 0.029rem + 2.54vw, 20px));
   line-height: 23.4px;
 }
 
+/* Advice section start */
 .advice__heading {
   margin-block-end: 10px;
 }
@@ -177,7 +228,9 @@
   font-weight: 400;
   font-size: 18px;
 }
+/* Advice section end */
 
+/* Gallery section start */
 .gallery__image {
   max-inline-size: 100%;
   min-block-size: 100%;
@@ -199,22 +252,41 @@
   display: grid;
   gap: 10px;
 }
-/* FOOTER */
+/* Gallery section end */
+
+/* Footer start */
 
 .footer {
   display: grid;
   place-items: center;
-  padding: var(--inline-section-padding);
+  padding: var(--inline-section-padding, clamp(10px, 0.029rem + 2.54vw, 20px));
   min-block-size: 668px;
   block-size: 100vh;
 }
 
-/* MEDIA */
+/* Footer end */
+
+/* Media start */
 
 @media (min-width: 768px) {
+  /* Переиспользуемые стили start */
   .title {
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
+
+  /* Заголовки */
+  .section-heading {
+    margin-block-end: 0;
+    max-inline-size: 236px;
+  }
+
+  /* Контейнеры */
+  .section-block {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 20px;
+  }
+  /* Переиспользуемые стили end */
 
   /* Header start */
   .header {
@@ -232,22 +304,13 @@
   /* Header end */
 
   /* Main start */
-  .section-block {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    gap: 20px;
-  }
-
-  .section-heading {
-    margin-block-end: 0;
-    max-inline-size: 236px;
-  }
 
   .what-section {
     grid-template-columns: none;
     gap: 20px;
   }
 
+  /* Gallery section start */
   .gallery {
     gap: 20px;
   }
@@ -281,10 +344,22 @@
   .street-img {
     grid-area: street;
   }
+  /* Gallery section end */
+
   /* Main end */
 }
 
 @media (min-width: 1024px) {
+  /* Переиспользуемые стили start */
+
+  /* Заголовки */
+  .section-heading {
+    max-inline-size: 315px;
+  }
+
+  /* Переиспользуемые стили end */
+
+  /* Header start */
   .header__theme-menu {
     align-items: center;
     margin-block-start: 0;
@@ -299,11 +374,9 @@
   .header__content-text {
     max-inline-size: 491px;
   }
+  /* Header end */
 
   /* Main start */
-  .section-heading {
-    max-inline-size: 315px;
-  }
 
   .what-section > .content-container {
     display: grid;
@@ -315,3 +388,5 @@
     block-size: 1048px;
   }
 }
+
+/* Media end */
