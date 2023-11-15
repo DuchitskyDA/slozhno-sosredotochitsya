@@ -1,8 +1,9 @@
 .page.theme_dark {
-  --bg-color: #000028;
   --main-color: #f1b2ce;
+  --secondary-color: #000028;
   --heading-color: #db00ff;
   --accent-color: #ff0070;
+  --bg-color: var(--secondary-color);
   --bg-image: url(../images/cover-image-dark.png);
-  --border-value : 1px solid var(--accent-color);
+  --border-value: 1px solid var(--accent-color);
 }
