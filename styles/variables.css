@@ -4,6 +4,7 @@
   --heading-color: #db00ff;
   --accent-color: #ff0070;
   --bg-image: url(../images/cover-image-dark.png);
+  --bg-color: var(--secondary-color);
   --inline-section-padding: clamp(10px, 0.029rem + 2.54vw, 20px);
   --block-section-padding: clamp(50px, 1.336rem + 7.63vw, 80px);
   --border-value: 1px solid var(--accent-color);
