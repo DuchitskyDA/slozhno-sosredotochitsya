@@ -42,6 +42,7 @@
   font-weight: 700;
   line-height: 23.4px;
   background-color: var(--accent-color, #ff0070);
+  font-size: 18px;
 }
 
 .text-shadow {

@@ -24,8 +24,7 @@
   }
 
   .decorated-zone__item {
-    position: relative;
-    z-index: -1;
+    display: none;
   }
 
   .decorated-zone::before {
