@@ -325,25 +325,24 @@
     block-size: 780px;
   }
 
-  .sunset-img {
+  .gallery__list-item:nth-child(1) {
     grid-area: sunset;
   }
 
-  .ice-cream-img {
+  .gallery__list-item:nth-child(2) {
     grid-area: ice-cream;
   }
 
-  .tape-img {
+  .gallery__list-item:nth-child(3) {
     grid-area: tape;
   }
-
-  .books-img {
+  .gallery__list-item:nth-child(4) {
     grid-area: books;
   }
-
-  .street-img {
+  .gallery__list-item:nth-child(5) {
     grid-area: street;
   }
+
   /* Gallery section end */
 
   /* Main end */
